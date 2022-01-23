@@ -5,8 +5,38 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>simbot.example</groupId>
-    <artifactId>simbot-core-normal-maven</artifactId>
+    <artifactId>simbot-core-normal-maven-java</artifactId>
     <version>0</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
+    <properties>
+        <simbot.version>3.0.0.preview.1.1</simbot.version>
+        <simbot-mirai.sub.version>292.0.1</simbot-mirai.sub.version>
+        <simbot-mirai.version>${simbot.version}-${simbot-mirai.sub.version}</simbot-mirai.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>love.forte.simbot</groupId>
+            <artifactId>simbot-core</artifactId>
+            <version>${simbot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>love.forte.simbot.component</groupId>
+            <artifactId>simbot-component-mirai-core</artifactId>
+            <version>${simbot-mirai.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
