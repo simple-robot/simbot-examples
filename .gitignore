@@ -1,4 +1,6 @@
 *.class
+*.iml
+#**/iml
 *.log
 *.ctxt
 .mtj.tmp/
