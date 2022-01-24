@@ -7,6 +7,8 @@ import love.forte.simbot.event.EventResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author ForteScarlet
  */
@@ -29,10 +31,12 @@ public class MyListenerManagerFactory {
         final Logger logger = LoggerFactory.getLogger("处理时间");
         configuration.interceptors(generator -> {
             generator.listenerIntercept(context -> {
-                final long start = System.currentTimeMillis();
+                final long startNano = System.nanoTime();
+                // 放行，进行下一步逻辑。
                 final EventResult process = context.proceedBlocking();
-                final long end = System.currentTimeMillis();
-                logger.debug("事件处理时间: {} ms", end - start);
+                final long endNano = System.nanoTime();
+                final long time = endNano - startNano;
+                logger.debug("事件处理时间: {} ms, {} ns", TimeUnit.NANOSECONDS.toMillis(time), time);
                 return process;
             });
 
