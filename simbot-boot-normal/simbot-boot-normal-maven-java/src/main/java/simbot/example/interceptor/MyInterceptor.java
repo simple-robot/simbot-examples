@@ -3,6 +3,7 @@ package simbot.example.interceptor;
 import love.forte.di.annotation.Beans;
 import love.forte.simbot.ID;
 import love.forte.simbot.event.BlockingEventProcessingInterceptor;
+import love.forte.simbot.event.Event;
 import love.forte.simbot.event.EventProcessingResult;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -25,7 +26,8 @@ public class MyInterceptor implements BlockingEventProcessingInterceptor {
     @Override
     public EventProcessingResult doIntercept(@NotNull Context context) {
         // 事件ID，用于日志
-        final ID eventId = context.getEventContext().getEvent().getId();
+        final Event event = context.getEventContext().getEvent();
+        final ID eventId = event.getId();
         // 开始时间
         final Instant start = Instant.now();
 
@@ -35,7 +37,7 @@ public class MyInterceptor implements BlockingEventProcessingInterceptor {
         // 结束时间
         final Instant end = Instant.now();
         final Duration duration = Duration.between(start, end);
-        LOGGER.info("事件「{}」处理时间: {}", eventId, duration);
+        LOGGER.info("事件「{}」处理时间: {}, Event: {}", eventId, duration, event);
         return process;
     }
 
