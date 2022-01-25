@@ -6,7 +6,7 @@
         </console>
     </appenders>
     <loggers>
-        <logger path="" />
+        <logger name="love.forte" level="DEBUG" />
         <root level="INFO">
             <appender-ref ref="Console"/>
         </root>
