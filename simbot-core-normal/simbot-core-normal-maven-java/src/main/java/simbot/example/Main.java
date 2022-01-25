@@ -32,7 +32,7 @@ public class Main {
      * Main
      * @param args args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // 构建最主要的监听管理器，也就是事件处理器。
         final CoreListenerManager listenerManager = MyListenerManagerFactory.newManager();
 
