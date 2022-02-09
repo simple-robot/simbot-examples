@@ -21,7 +21,7 @@
     </build>
 
     <properties>
-        <simbot.version>3.0.0.preview.1.1</simbot.version>
+        <simbot.version>3.0.0.preview.2.0</simbot.version>
         <simbot-mirai.sub.version>292.0.1</simbot-mirai.sub.version>
         <simbot-mirai.version>${simbot.version}-${simbot-mirai.sub.version}</simbot-mirai.version>
         <log4j2.version>2.17.0</log4j2.version>

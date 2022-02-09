@@ -11,5 +11,3 @@
 - [simbot-boot + gradle + kotlin](simbot-boot-normal/simbot-boot-normal-gradle-kotlin)
 
 
-### 注意事项
-目前示例中使用的 `1.1` 版本尚未部署，暂不可用。
