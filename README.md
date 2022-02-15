@@ -7,7 +7,8 @@
 ### 指路牌
 
 - [simbot基础库 + maven + java](simbot-core-normal/simbot-core-normal-maven-java)
-- [simbot-boot + maven + java](simbot-boot-normal/simbot-boot-normal-maven-java)
-- [simbot-boot + gradle + kotlin](simbot-boot-normal/simbot-boot-normal-gradle-kotlin)
+- [simbot-boot-基础示例 + maven + java](simbot-boot-normal/simbot-boot-normal-maven-java)
+- [simbot-boot-基础示例 + gradle + kotlin](simbot-boot-normal/simbot-boot-normal-gradle-kotlin)
+- [simbot-boot-请求相关示例 + gradle + kotlin](simbot-boot-normal/simbot-boot-requests-gradle-kotlin)
 
 
