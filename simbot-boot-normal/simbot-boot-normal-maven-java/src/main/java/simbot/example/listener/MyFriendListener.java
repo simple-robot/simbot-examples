@@ -54,10 +54,6 @@ public class MyFriendListener {
     @ContentTrim // 将filter所需的匹配内容进行 trim 操作。
     @Listener
     public void friendListen2(FriendMessageEvent event, ContinuousSessionContext sessionContext) {
-        final ContinuousSessionProvider<Object> provider = sessionContext.getProvider(Identifies.ID("abc"));
-        if (provider != null) {
-            provider.push("ForteScarlet");
-        }
         // 这里将会直接通过好友对象进行消息发送
         event.getFriend().sendBlocking("你也好");
 
