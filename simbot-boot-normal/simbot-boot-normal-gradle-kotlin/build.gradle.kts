@@ -24,13 +24,14 @@ repositories {
     mavenCentral()
 }
 
-val simbotVersion = "3.0.0.preview.2.0"
-val simbotMiraiVersion = simbotVersion + "-292.0.1"
-val log4j2Version = "2.17.0"
+val simbotVersion = "3.0.0.preview.3.0"
+val simbotMiraiVersion = "$simbotVersion-292.0.1"
+val log4j2Version = "2.17.1"
 
 dependencies {
     implementation("love.forte.simbot.boot:simboot-core:$simbotVersion")
     implementation("love.forte.simbot.component:simbot-component-mirai-boot:$simbotMiraiVersion")
+
     implementation("org.apache.logging.log4j:log4j-api:$log4j2Version")
     implementation("org.apache.logging.log4j:log4j-core:$log4j2Version")
     implementation("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
