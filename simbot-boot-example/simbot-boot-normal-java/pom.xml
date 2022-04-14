@@ -7,32 +7,7 @@
     <groupId>simbot.example</groupId>
     <artifactId>simbot-boot-normal-java</artifactId>
     <version>0</version>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <version>1.6.10</version>
-                <executions>
-                    <execution>
-                        <id>compile</id>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+
 
     <properties>
         <simbot.version>3.0.0.preview.6.0</simbot.version>
@@ -54,6 +29,8 @@
 
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
+            <!--suppress KotlinMavenPluginPhase -->
+            <!-- 如果你不直接使用kotlin，则不需要加Build中与kotlin的相关内容 -->
             <artifactId>kotlin-stdlib-jdk8</artifactId>
             <version>1.6.10</version>
         </dependency>
