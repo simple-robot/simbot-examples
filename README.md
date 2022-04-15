@@ -1,6 +1,6 @@
 # simbot-examples
 
-这里是simbot 3.x 版本所提供的各种示例项目库，你可以从这里选择你所需要的部分来作为模板项目进行使用。
+这里是 simbot3 版本所提供的各种示例项目库，你可以从这里选择你所需要的部分来作为模板项目进行使用。
 
 示例中，java项目基本以Maven进行构建，而kotlin项目一般以Gradle进行构建。
 
@@ -15,9 +15,7 @@
 
 ### 指路牌
 
-- [simbot基础库 + java](simbot-core-example/simbot-core-normal-java)
-- [simbot-boot-基础示例 + java](simbot-boot-example/simbot-boot-normal-java)
-- [simbot-boot-基础示例 + kotlin](simbot-boot-example/simbot-boot-normal-kotlin)
-- [simbot-boot-请求相关示例 + kotlin](simbot-boot-example/simbot-boot-requests-kotlin)
-
+- [simbot核心库 相关示例](simbot-core-example)
+- [Simbot Boot 相关示例](simbot-boot-example)
+- [Spring Boot Starter 相关示例](simbot-spring-boot-starter-example)
 

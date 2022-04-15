@@ -1,11 +1,8 @@
 package simbot.example.entity;
 
 import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 /**
  * 回复内容。
@@ -13,14 +10,11 @@ import javax.persistence.Table;
  * @author ForteScarlet
  */
 @Data
-@Entity
-@Table
 public class Reply {
     /**
      * id.
      */
     @Id
-    @GeneratedValue
     private Long id;
 
 
