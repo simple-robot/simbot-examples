@@ -3,10 +3,10 @@ package simbot.example.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import simbot.example.entity.Reply;
 import simbot.example.service.ReplyService;
-
-import java.util.List;
 
 /**
  * @author ForteScarlet
@@ -20,21 +20,23 @@ public class ReplyController {
 
     /**
      * 根据条件查询所有匹配数据.
+     *
      * @param condition condition
      * @return data list.
      */
     @GetMapping("/list")
-    public List<Reply> replies(Reply condition) {
+    public Flux<Reply> replies(Reply condition) {
         return replyService.replies(condition);
     }
 
     /**
      * 根据关键词查询其对应的结果。
+     *
      * @param keyword keyword
      * @return 回复语句
      */
     @GetMapping("/keyword/{keyword}")
-    public String reply(@PathVariable String keyword) {
+    public Mono<String> reply(@PathVariable String keyword) {
         return replyService.reply(keyword);
     }
 
@@ -45,9 +47,10 @@ public class ReplyController {
      * @return inserted entity.
      */
     @PostMapping
-    public Reply add(@RequestBody Reply reply) {
+    public Mono<Reply> add(@RequestBody Reply reply) {
         return replyService.addReply(reply.getKeyword(), reply.getContent());
     }
+
 
     /**
      * 根据关键词删除reply信息。
@@ -56,8 +59,7 @@ public class ReplyController {
      */
     @DeleteMapping("/keyword/{keyword}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable String keyword) {
-        replyService.deleteReply(keyword);
+    public Mono<Void> delete(@PathVariable String keyword) {
+        return replyService.deleteReply(keyword);
     }
-
 }

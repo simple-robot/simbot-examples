@@ -1,8 +1,9 @@
-# Spring Boot Web Java
+# Spring Boot Webflux Java
 
 这是在Spring Boot下，结合使用：
-- Spring Web 
+- Spring Reactive Web 
 - Spring Data JPA
+- Spring Data R2DBC
 - H2 Database
 
 的 Demo 工程。在这里，将会提供一个简单的示例：关键词自动回复。
