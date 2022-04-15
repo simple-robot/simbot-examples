@@ -10,7 +10,7 @@
 
 
     <properties>
-        <simbot.version>3.0.0.preview.6.0</simbot.version>
+        <simbot.version>3.0.0.preview.7.0</simbot.version>
         <simbot-mirai.version>3.0.0.0.preview.1.0</simbot-mirai.version>
     </properties>
 
