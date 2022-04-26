@@ -24,8 +24,8 @@ repositories {
     mavenCentral()
 }
 
-val simbotVersion = "3.0.0.preview.7.0"
-val simbotMiraiVersion = "3.0.0.0.preview.1.0"
+val simbotVersion = "3.0.0.preview.8.0"
+val simbotMiraiVersion = "3.0.0.0.preview.2.0"
 
 dependencies {
     implementation("love.forte.simbot.boot:simboot-core:$simbotVersion")

@@ -41,15 +41,15 @@ class GroupRequestListener {
      * 群成员增加事件。
      */
     @Listener
-    suspend fun MemberIncreaseEvent<*, *>.increase() {
+    suspend fun MemberIncreaseEvent.increase() {
         logger.info("群成员增加！{}", this)
         logger.info("source: {}", source())
         logger.info("source.id: {}", source().id)
         logger.info("actionType: {}", actionType)
         logger.info("operator: {}", operator())
         logger.info("operator?.id: {}", operator()?.id)
-        logger.info("target: {}", target())
-        logger.info("target.id: {}", target().id)
+        logger.info("member: {}", member())
+        logger.info("member.id: {}", member().id)
     }
 
 }

@@ -46,6 +46,7 @@ public class MyFriendListener {
         } else {
             friend.sendBlocking("是的");
         }
+        friend.sendBlocking(event.getMessageContent());
 
     }
 

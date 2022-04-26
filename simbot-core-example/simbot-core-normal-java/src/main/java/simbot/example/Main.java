@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
  * {@code simbot-core} 作为基础模块，其使用方式可能会略显繁琐（在Java中尤为明显），
  * 但同时它相对于 {@code simbot-boot} 模块来讲拥有更高的自由度。
  *
+ * ！！！⚠注意⚠！！！ Java中，不建议直接使用 {@code simbot-core} 模块。
+ *
  * @author ForteScarlet
  */
 @SuppressWarnings({"AlibabaRemoveCommentedCode", "CommentedOutCode"})
