@@ -25,10 +25,10 @@ class GroupRequestListener {
     @OptIn(ExperimentalSimbotApi::class)
     suspend fun GroupJoinRequestEvent.groupAdd() {
         logger.info("收到群申请！{}", this)
-        logger.info("message: {}", message)
-        logger.info("requester: {}", requester())
-        logger.info("requester.id: {}", requester().id)
-        logger.info("inviter.id: {}", inviter()?.id)
+        logger.info("\t==> message:      {}", message)
+        logger.info("\t==> requester:    {}", requester())
+        logger.info("\t==> requester.id: {}", requester().id)
+        logger.info("\t==> inviter.id:   {}", inviter()?.id)
 
         // 同意申请
         accept()
@@ -43,13 +43,13 @@ class GroupRequestListener {
     @Listener
     suspend fun MemberIncreaseEvent.increase() {
         logger.info("群成员增加！{}", this)
-        logger.info("source: {}", source())
-        logger.info("source.id: {}", source().id)
-        logger.info("actionType: {}", actionType)
-        logger.info("operator: {}", operator())
-        logger.info("operator?.id: {}", operator()?.id)
-        logger.info("member: {}", member())
-        logger.info("member.id: {}", member().id)
+        logger.info("\t==> source:       {}", source())
+        logger.info("\t==> source.id:    {}", source().id)
+        logger.info("\t==> actionType:   {}", actionType)
+        logger.info("\t==> operator:     {}", operator())
+        logger.info("\t==> operator?.id: {}", operator()?.id)
+        logger.info("\t==> member:       {}", member())
+        logger.info("\t==> member.id:    {}", member().id)
     }
 
 }

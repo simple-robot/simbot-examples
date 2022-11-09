@@ -1,29 +1,17 @@
 {
-  "code": 123456,
-  "password": "账号的密码",
-  "passwordMD5": null,
-  "deviceInfoSeed": 1,
-  "workingDir": ".",
-  "heartbeatPeriodMillis": 60000,
-  "statHeartbeatPeriodMillis": 300000,
-  "heartbeatTimeoutMillis": 5000,
-  "heartbeatStrategy": "STAT_HB",
-  "reconnectionRetryTimes": 2147483647,
-  "autoReconnectOnForceOffline": false,
-  "protocol": "ANDROID_PHONE",
-  "highwayUploadCoroutineCount": 8,
-  "deviceInfoJson": null,
-  "simpleDeviceInfoJson": null,
-  "deviceInfoFile": null,
-  "noNetworkLog": false,
-  "noBotLog": false,
-  "isShowingVerboseEventLog": false,
-  "cacheDir": "cache",
-  "contactListCache": {
-    "saveIntervalMillis": 60000,
-    "friendListCacheEnabled": false,
-    "groupMemberListCacheEnabled": false
+  "component": "simbot.mirai",
+  "code": 1145141919,
+  "passwordInfo": {
+    "type": "text",
+    "text": "密码明文"
   },
-  "loginCacheEnabled": true,
-  "convertLineSeparator": true
+  "config": {
+    "protocol": "ANDROID_PHONE",
+    "deviceInfo": {
+      "type": "auto"
+    },
+    "recallMessageCacheStrategyConfig": {
+      "type": "invalid"
+    }
+  }
 }

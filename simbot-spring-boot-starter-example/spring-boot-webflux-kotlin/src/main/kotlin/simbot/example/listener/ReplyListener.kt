@@ -3,7 +3,6 @@ package simbot.example.listener
 import love.forte.simboot.annotation.Listener
 import love.forte.simbot.event.EventResult
 import love.forte.simbot.event.FriendMessageEvent
-import love.forte.simbot.event.inFriend
 import org.springframework.stereotype.Service
 import simbot.example.service.ReplyService
 
@@ -29,10 +28,7 @@ class ReplyListener(private val replyService: ReplyService) {
         val reply = replyService.reply(plainText) ?: return EventResult.defaults()
 
         // 如果有，发送回复消息，并阻止后续事件的执行。
-        friendMessageEvent.inFriend {
-            send(reply)
-        }
-
+        friendMessageEvent.friend().send(reply)
         return EventResult.truncate()
     }
 }

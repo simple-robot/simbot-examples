@@ -1,12 +1,8 @@
 package simbot.example;
 
-import love.forte.simbot.component.mirai.MiraiGroup;
-import love.forte.simbot.component.mirai.MiraiMember;
 import love.forte.simbot.component.mirai.event.MiraiGroupMessageEvent;
-import love.forte.simbot.component.mirai.event.MiraiReceivedMessageContent;
-import love.forte.simbot.core.event.CoreListenerManagerConfiguration;
-import love.forte.simbot.core.event.CoreListenerUtil;
-import org.slf4j.Logger;
+import love.forte.simbot.core.event.SimpleListenerManagerConfiguration;
+import love.forte.simbot.core.event.SimpleListeners;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -20,8 +16,8 @@ public class MyGroupListenerConfig {
      *
      * @param configuration 配置类
      */
-    public static void config(CoreListenerManagerConfiguration configuration) {
-        Logger logger = LoggerFactory.getLogger("群消息日志");
+    public static void config(SimpleListenerManagerConfiguration configuration) {
+        final var logger = LoggerFactory.getLogger("群消息日志");
 
         /*
             你可能注意到了，这里监听的是 MiraiGroupMessageEvent 事件类型。
@@ -29,12 +25,12 @@ public class MyGroupListenerConfig {
             虽然此事件实现了部分标准事件类型，但是它会更有针对性，功能会更丰富。
             但是相对的这种事件类型只能在其所属组件环境下存在。
          */
-        configuration.addListener(CoreListenerUtil.newCoreListener(
+        configuration.addListener(SimpleListeners.listener(
                 MiraiGroupMessageEvent.Key,
                 (context, event) -> {
-                    final MiraiReceivedMessageContent messageContent = event.getMessageContent();
-                    final MiraiGroup group = event.getGroup();
-                    final MiraiMember author = event.getAuthor();
+                    final var messageContent = event.getMessageContent();
+                    final var group = event.getGroup();    // 或使用 getGroupAsync()
+                    final var author = event.getAuthor(); // 或使用 getAuthorAsync()
                     logger.debug(
                             "「{}({})」在群「{}({})」发送了消息：{}",
                             author.getUsername(), author.getId(),

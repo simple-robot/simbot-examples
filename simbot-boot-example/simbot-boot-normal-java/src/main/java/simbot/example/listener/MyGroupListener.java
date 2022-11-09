@@ -34,7 +34,7 @@ public class MyGroupListener {
         final String authorName = event.getAuthor().getUsername();
         final MiraiReceivedMessageContent messageContent = event.getMessageContent();
 
-        // nativeMessageChain是mirai中的原生事件对象
+        // originalMessageChain 是mirai中的原生事件对象
         // 只有在使用mirai组件下的特殊事件类型的时候才会有
         final MessageChain nativeMessageChain = messageContent.getOriginalMessageChain();
 

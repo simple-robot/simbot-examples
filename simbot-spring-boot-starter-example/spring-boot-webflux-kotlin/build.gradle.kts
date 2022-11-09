@@ -1,33 +1,30 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.6.6"
+	id("org.springframework.boot") version "2.7.5"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
-	kotlin("jvm") version "1.6.10"
-	kotlin("plugin.spring") version "1.6.10"
+	kotlin("jvm") version "1.7.20"
+	kotlin("plugin.spring") version "1.7.20"
 }
 
 group = "simbot.example"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
 	mavenCentral()
 }
 
-val simbotVersion = "3.0.0.preview.8.0"
-val simbotMiraiVersion = "3.0.0.0.preview.2.0"
-
-val exposedVersion  = "0.38.2"
+val simbotVersion = "3.0.0-M2"
+val simbotMiraiVersion = "3.0.0.0-beta.2"
 
 dependencies {
 	// simbot
 	implementation("love.forte.simbot.boot:simboot-core-spring-boot-starter:$simbotVersion")
-	implementation("love.forte.simbot.component:simbot-component-mirai-boot:$simbotMiraiVersion") {
-		exclude("love.forte.simbot.boot", "simboot-api")
-	}
+	implementation("love.forte.simbot.component:simbot-component-mirai-core:$simbotMiraiVersion")
 
 	// implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	
 	implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
 	runtimeOnly("io.r2dbc:r2dbc-h2")
 
@@ -45,7 +42,7 @@ dependencies {
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "1.8"
+		jvmTarget = "11"
 	}
 }
 

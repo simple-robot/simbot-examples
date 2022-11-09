@@ -27,7 +27,7 @@ public class ReplyServiceImpl implements ReplyService {
 
     @Override
     public Mono<Reply> addReply(String keyword, String content) {
-        final Reply entity = new Reply();
+        final var entity = new Reply();
         entity.setKeyword(keyword);
         entity.setContent(content);
         return replyRepository.save(entity);
@@ -44,7 +44,7 @@ public class ReplyServiceImpl implements ReplyService {
             return replyRepository.findAll();
         }
 
-        final ExampleMatcher exampleMatcher = ExampleMatcher.matching()
+        final var exampleMatcher = ExampleMatcher.matching()
                 .withMatcher("keyword", ExampleMatcher.GenericPropertyMatcher::contains)
                 .withMatcher("content", ExampleMatcher.GenericPropertyMatcher::contains);
 

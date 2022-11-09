@@ -2,7 +2,6 @@ package simbot.example.listener;
 
 import lombok.RequiredArgsConstructor;
 import love.forte.simboot.annotation.Listener;
-import love.forte.simbot.definition.Friend;
 import love.forte.simbot.event.EventResult;
 import love.forte.simbot.event.FriendMessageEvent;
 import org.springframework.stereotype.Service;
@@ -30,16 +29,17 @@ public class ReplyListener {
      */
     @Listener
     public EventResult reply(FriendMessageEvent friendMessageEvent) {
-        final String plainText = friendMessageEvent.getMessageContent().getPlainText().trim();
+        final var plainText = friendMessageEvent.getMessageContent().getPlainText().trim();
 
-        final String reply = replyService.reply(plainText);
+        final var reply = replyService.reply(plainText);
+
         if (reply == null) {
             // 如果没有此消息没有对应的回应消息，跳过
             return EventResult.defaults();
         }
 
         // 如果有，发送消息，并阻止后续事件的执行。
-        final Friend currentFriend = friendMessageEvent.getFriend();
+        final var currentFriend = friendMessageEvent.getFriend();
         currentFriend.sendBlocking(reply);
 
         // 返回 EventResult.truncate 代表阻止后续其他监听函数的执行。

@@ -26,9 +26,9 @@ class FriendRequestListener {
     @Listener
     suspend fun FriendAddRequestEvent.friendAdd() {
         logger.info("好友申请！{}", this)
-        logger.info("requester: {}", requester())
-        logger.info("requester.id: {}", requester().id)
-        logger.info("message: {}", message)
+        logger.info("\t==> requester:    {}", requester())
+        logger.info("\t==> requester.id: {}", requester().id)
+        logger.info("\t==> message:      {}", message)
 
         // 同意申请
         accept()
@@ -42,8 +42,8 @@ class FriendRequestListener {
     @Listener
     suspend fun FriendIncreaseEvent.friendIncrease() {
         logger.info("好友增加！{}", this)
-        logger.info("friend: {}", friend())
-        logger.info("friend.id: {}", friend().id)
+        logger.info("\t==> friend:    {}", friend())
+        logger.info("\t==> friend.id: {}", friend().id)
     }
 
 }

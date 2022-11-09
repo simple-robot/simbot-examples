@@ -8,7 +8,6 @@ import simbot.example.entity.Reply;
 import simbot.example.repository.ReplyRepository;
 import simbot.example.service.ReplyService;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 /**
@@ -23,13 +22,13 @@ public class ReplyServiceImpl implements ReplyService {
 
     @Override
     public String reply(String keyword) {
-        final Reply found = replyRepository.findByKeyword(keyword);
+        final var found = replyRepository.findByKeyword(keyword);
         return found == null ? null : found.getContent();
     }
 
     @Override
     public Reply addReply(String keyword, String content) {
-        final Reply entity = new Reply();
+        final var entity = new Reply();
         entity.setKeyword(keyword);
         entity.setContent(content);
         return replyRepository.save(entity);
@@ -46,7 +45,7 @@ public class ReplyServiceImpl implements ReplyService {
             return replyRepository.findAll();
         }
 
-        final ExampleMatcher exampleMatcher = ExampleMatcher.matching()
+        final var exampleMatcher = ExampleMatcher.matching()
                 .withMatcher("keyword", ExampleMatcher.GenericPropertyMatcher::contains)
                 .withMatcher("content", ExampleMatcher.GenericPropertyMatcher::contains);
 

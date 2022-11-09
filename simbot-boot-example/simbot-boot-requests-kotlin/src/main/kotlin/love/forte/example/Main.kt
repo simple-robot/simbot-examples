@@ -1,6 +1,6 @@
 package love.forte.example
 
-import love.forte.simboot.SimbootApp
+import love.forte.simboot.core.SimbootApp
 import love.forte.simboot.core.SimbootApplication
 
 /**

@@ -4,9 +4,7 @@ import love.forte.di.annotation.Beans;
 import love.forte.simboot.annotation.ContentTrim;
 import love.forte.simboot.annotation.Filter;
 import love.forte.simboot.annotation.Listener;
-import love.forte.simbot.Identifies;
 import love.forte.simbot.PriorityConstant;
-import love.forte.simbot.action.ReplySupport;
 import love.forte.simbot.definition.Friend;
 import love.forte.simbot.event.ContinuousSessionContext;
 import love.forte.simbot.event.EventResult;
@@ -19,7 +17,6 @@ import org.slf4j.LoggerFactory;
  *
  * @author ForteScarlet
  */
-@SuppressWarnings("AlibabaCommentsMustBeJavadocFormat")
 @Beans
 public class MyFriendListener {
 
@@ -38,14 +35,10 @@ public class MyFriendListener {
         log.info("friend: {}({})", friend.getUsername(), friend.getId());
         log.info("message: {}", event.getMessageContent().getPlainText());
         // 回复消息你可以：
-        // 1. 先判断 event 事件对象是否允许"回复"，在允许的情况使用"reply(reply)", 不允许则通过获取好友来直接发送消息。
+        // 1. 通过 MessageEvent.reply 回复消息。
         // 2. 直接获取好友发送消息，不通过事件回复。
         // 下面的示例选择方案1
-        if (event instanceof ReplySupport) {
-            ((ReplySupport) event).replyBlocking("是的");
-        } else {
-            friend.sendBlocking("是的");
-        }
+        event.replyBlocking("是的");
         friend.sendBlocking(event.getMessageContent());
 
     }
@@ -88,7 +81,7 @@ public class MyFriendListener {
      */
     @Filter("绑定")
     @Listener(priority = PriorityConstant.PRIORITIZED_1) // 使用较高的优先级。
-    public EventResult friendListen3(FriendMessageEvent event, ContinuousSessionContext sessionContext) throws InterruptedException {
+    public EventResult friendListen3(FriendMessageEvent event, ContinuousSessionContext sessionContext) {
         // 给出提示
         final Friend friend = event.getFriend();
         friend.sendBlocking("请输入账号");
@@ -98,26 +91,10 @@ public class MyFriendListener {
         // WARN: 持续会话的API目前还在设计中并且未来可能发生变更。在发布正式版本之前请不要过分依赖此方法。
         // WARN: 持续会话在Java中使用的时候可能会出现异常日志。
 
-        final String value = sessionContext.waitingForOnMessage(
-                Identifies.ID("abc"),
-                // 会话ID, 默认随机, 可以不给.
-                // Identifies.randomID(),
-                // 超时时间，单位毫秒，超时后此会话将会被关闭. 默认为0, 即永不超时. 不建议使用默认
-                30_000L,
+        final var nextMessage = sessionContext.nextMessage(event, FriendMessageEvent.Key);
 
-                // 一个消息事件
-                event,
-
-                // 会话处理函数
-                (sessionEvent, context, provider) -> {
-                    // 得到下一个事件中的文本消息
-                    final String plainText = sessionEvent.getMessageContent().getPlainText();
-
-                    // 推送此文本
-                    provider.push(plainText);
-                });
-
-        final String message = "绑定成功！账号为: " + value;
+        final var account = nextMessage.getPlainText();
+        final String message = "绑定成功！账号为: " + account;
 
         // 发送消息
         friend.sendBlocking(message);

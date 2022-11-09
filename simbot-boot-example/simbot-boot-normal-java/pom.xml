@@ -11,8 +11,9 @@
 
 
     <properties>
-        <simbot.version>3.0.0.preview.8.0</simbot.version>
-        <simbot-mirai.version>3.0.0.0.preview.2.0</simbot-mirai.version>
+        <java.version>17</java.version>
+        <simbot.version>3.0.0-M2</simbot.version>
+        <simbot-mirai.version>3.0.0.0-beta.2</simbot-mirai.version>
     </properties>
 
     <dependencies>
@@ -24,16 +25,8 @@
 
         <dependency>
             <groupId>love.forte.simbot.component</groupId>
-            <artifactId>simbot-component-mirai-boot</artifactId>
+            <artifactId>simbot-component-mirai-core</artifactId>
             <version>${simbot-mirai.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <!--suppress KotlinMavenPluginPhase -->
-            <!-- 如果你不直接使用kotlin，则不需要加Build中与kotlin的相关内容 -->
-            <artifactId>kotlin-stdlib-jdk8</artifactId>
-            <version>1.6.10</version>
         </dependency>
     </dependencies>
 
@@ -43,8 +36,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <source>17</source>
+                    <target>17</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>

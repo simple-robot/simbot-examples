@@ -1,6 +1,6 @@
 package simbot.example;
 
-import love.forte.simboot.autoconfigure.EnableSimbot;
+import love.forte.simboot.spring.autoconfigure.EnableSimbot;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

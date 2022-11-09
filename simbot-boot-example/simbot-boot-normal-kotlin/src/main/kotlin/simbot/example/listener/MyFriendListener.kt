@@ -4,12 +4,7 @@ import love.forte.simboot.annotation.Filter
 import love.forte.simboot.annotation.Listener
 import love.forte.simbot.ExperimentalSimbotApi
 import love.forte.simbot.PriorityConstant
-import love.forte.simbot.action.replyIfSupport
-import love.forte.simbot.event.ContinuousSessionContext
-import love.forte.simbot.event.EventResult
-import love.forte.simbot.event.FriendMessageEvent
-import love.forte.simbot.event.waitingForOnMessage
-import kotlin.time.Duration.Companion.minutes
+import love.forte.simbot.event.*
 
 
 /**
@@ -17,7 +12,7 @@ import kotlin.time.Duration.Companion.minutes
  */
 @Listener
 suspend fun FriendMessageEvent.myListen() {
-    replyIfSupport("是的")
+    reply("是的")
 }
 
 
@@ -30,13 +25,6 @@ suspend fun FriendMessageEvent.myListen() {
  * > 好友：xxxx                (3)
  * > bot：绑定成功！账号：xxxx   (4)
  *```
- *
- * 你在测试的时候会发现，在进行第 `(3)` 步的时候，很有可能会触发 [myListen] 监听函数。
- *
- * 这属于「逻辑上」的正常现象，但很有可能不是你所期望的「业务上」的结果。
- * 目前阶段，你需要自行想办法解决这个问题，例如借助ID或者拦截器等方式在某些情况下阻止某些监听函数的执行。
- *
- *
  */
 @OptIn(ExperimentalSimbotApi::class)
 @Filter("绑定")
@@ -44,18 +32,17 @@ suspend fun FriendMessageEvent.myListen() {
 suspend fun FriendMessageEvent.myListen3(sessionContext: ContinuousSessionContext): EventResult {
     // 好友对象
     val friend = friend()
-
+    
     // 发送一句提示
     friend.send("请输入账号")
-
-    // 得到当前发送人的下一句话
-    val code: String =
-        sessionContext.waitingForOnMessage(sourceEvent = this, timeout = 5.minutes) { event, _, provider ->
-            provider.push(event.messageContent.plainText)
-        }
-
-    friend.send("绑定成功！账号: $code")
-
+    
+    // 等待下一个消息
+    val account: String = sessionContext {
+        nextMessage(FriendMessageEvent).plainText
+    }
+    
+    friend.send("绑定成功！账号: $account")
+    
     // 阻断后续执行
     return EventResult.truncate()
 }
