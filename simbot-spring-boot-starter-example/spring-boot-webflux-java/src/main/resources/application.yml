@@ -1,5 +1,4 @@
 server:
-  # 端口，经典之8080
   port: 8080
 
 
@@ -13,4 +12,4 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+       ddl-auto: update
