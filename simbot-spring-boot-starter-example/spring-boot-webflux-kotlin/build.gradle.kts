@@ -15,8 +15,8 @@ repositories {
 	mavenCentral()
 }
 
-val simbotVersion = "3.0.0-M2"
-val simbotMiraiVersion = "3.0.0.0-beta.2"
+val simbotVersion = "3.0.0-M5"
+val simbotMiraiVersion = "3.0.0.0-beta.6"
 
 dependencies {
 	// simbot
@@ -24,7 +24,7 @@ dependencies {
 	implementation("love.forte.simbot.component:simbot-component-mirai-core:$simbotMiraiVersion")
 
 	// implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	
+
 	implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
 	runtimeOnly("io.r2dbc:r2dbc-h2")
 

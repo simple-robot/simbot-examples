@@ -16,9 +16,8 @@
     <properties>
         <java.version>17</java.version>
 
-        <simbot.version>3.0.0-M2</simbot.version>
-        <simbot.mirai.version>3.0.0.0-beta.2</simbot.mirai.version>
-        <simbot.khl.version>3.0.0.0-alpha.2</simbot.khl.version>
+        <simbot.version>3.0.0-M5</simbot.version>
+        <simbot.mirai.version>3.0.0.0-beta.6</simbot.mirai.version>
 
     </properties>
     <dependencies>
@@ -42,23 +41,6 @@
             <artifactId>simbot-component-mirai-core</artifactId>
             <version>${simbot.mirai.version}</version>
         </dependency>
-
-        <!-- kaiheila组件 -->
-        <!--<dependency>-->
-        <!--    <groupId>love.forte.simbot.component</groupId>-->
-        <!--    <artifactId>simbot-component-kaiheila-boot</artifactId>-->
-        <!--    <version>${simbot.khl.version}</version>-->
-        <!--    <exclusions>-->
-        <!--        <exclusion>-->
-        <!--            <groupId>love.forte.simbot.boot</groupId>-->
-        <!--            <artifactId>*</artifactId>-->
-        <!--        </exclusion>-->
-        <!--        <exclusion>-->
-        <!--            <groupId>love.forte.simbot</groupId>-->
-        <!--            <artifactId>*</artifactId>-->
-        <!--        </exclusion>-->
-        <!--    </exclusions>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>com.h2database</groupId>
