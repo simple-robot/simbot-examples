@@ -1,9 +1,10 @@
 # Spring Boot Webflux Java
 
-这是在Spring Boot下，结合使用：
+这是在Spring Boot 3.0下，结合使用：
 - Spring Reactive Web 
 - Spring Data R2DBC
 - H2 Database
+- JDK17
 
 的 Demo 工程。在这里，将会提供一个简单的示例：关键词自动回复。
 

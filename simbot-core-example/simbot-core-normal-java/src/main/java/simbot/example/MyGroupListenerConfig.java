@@ -1,8 +1,8 @@
 package simbot.example;
 
 import love.forte.simbot.component.mirai.event.MiraiGroupMessageEvent;
-import love.forte.simbot.core.event.SimpleListenerManagerConfiguration;
 import love.forte.simbot.core.event.SimpleListeners;
+import love.forte.simbot.event.EventListenerManager;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -14,9 +14,9 @@ public class MyGroupListenerConfig {
     /**
      * 配置注册一个群消息监听，并在控制台打印出收到的消息，不做回复。
      *
-     * @param configuration 配置类
+     * @param eventListenerManager 监听函数管理器
      */
-    public static void config(SimpleListenerManagerConfiguration configuration) {
+    public static void config(EventListenerManager eventListenerManager) {
         final var logger = LoggerFactory.getLogger("群消息日志");
 
         /*
@@ -25,9 +25,10 @@ public class MyGroupListenerConfig {
             虽然此事件实现了部分标准事件类型，但是它会更有针对性，功能会更丰富。
             但是相对的这种事件类型只能在其所属组件环境下存在。
          */
-        configuration.addListener(SimpleListeners.listener(
-                MiraiGroupMessageEvent.Key,
+        eventListenerManager.register(SimpleListeners.listener(
+                MiraiGroupMessageEvent.Key, // 事件类型
                 (context, event) -> {
+                    // 事件处理逻辑
                     final var messageContent = event.getMessageContent();
                     final var group = event.getGroup();    // 或使用 getGroupAsync()
                     final var author = event.getAuthor(); // 或使用 getAuthorAsync()

@@ -2,6 +2,7 @@ package simbot.example.repository
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
+import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import org.springframework.data.repository.kotlin.CoroutineSortingRepository
 import org.springframework.stereotype.Repository
 
@@ -20,7 +21,7 @@ data class Reply(
  * 数据仓库交互接口。
  */
 @Repository
-interface ReplyRepository : CoroutineSortingRepository<Reply, Long> {
+interface ReplyRepository : CoroutineCrudRepository<Reply, Long>, CoroutineSortingRepository<Reply, Long> {
 
     /**
      * 根据 [Reply.keyword] 查询结果。

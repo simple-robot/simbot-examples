@@ -16,7 +16,7 @@
  */
 
 plugins {
-    kotlin("jvm") version "1.7.20"
+    kotlin("jvm") version "1.8.10"
 }
 
 repositories {
@@ -24,8 +24,8 @@ repositories {
     mavenCentral()
 }
 
-val simbotVersion = "3.0.0-M5"
-val simbotMiraiVersion = "3.0.0.0-beta.6"
+val simbotVersion = "3.0.0-RC.3"
+val simbotMiraiVersion = "3.0.0.0-M5"
 
 dependencies {
     implementation("love.forte.simbot.boot:simboot-core:$simbotVersion")
@@ -35,7 +35,7 @@ dependencies {
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     kotlinOptions {
         javaParameters = true
-        jvmTarget = "11"
+        jvmTarget = "17"
         freeCompilerArgs = freeCompilerArgs + listOf("-Xjvm-default=all")
     }
 }
