@@ -25,7 +25,7 @@ repositories {
 }
 
 val simbotVersion = "3.0.0-RC.3"
-val simbotMiraiVersion = "3.0.0.0-M5"
+val simbotMiraiVersion = "3.0.0.0-RC.2"
 
 dependencies {
     implementation("love.forte.simbot.boot:simboot-core:$simbotVersion")

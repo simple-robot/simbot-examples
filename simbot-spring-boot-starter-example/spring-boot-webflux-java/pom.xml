@@ -17,7 +17,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<simbot.version>3.0.0-RC.3</simbot.version>
-		<simbot.mirai.version>3.0.0.0-M5</simbot.mirai.version>
+		<simbot.mirai.version>3.0.0.0-RC.2</simbot.mirai.version>
 	</properties>
 	<dependencies>
 		<dependency>
